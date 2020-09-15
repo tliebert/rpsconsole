@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<body>
+    <script>
+
+function game() {
+    wins = 0
+    losses = 0
+    ties = 0 
+    playRound(prompt("make a choice"), computerPlay())
+    playRound(prompt("make a choice"), computerPlay())
+    playRound(prompt("make a choice"), computerPlay())
+    playRound(prompt("make a choice"), computerPlay())
+    playRound(prompt("make a choice"), computerPlay())
+    console.log(`You won ${wins} times, lost ${losses} times, and tied ${ties} times`);
+    console.log(winDeterminer(wins, losses, ties));
+}
+
+function winDeterminer(wins, losses, ties) {
+    if (wins > losses)
+        console.log("You win!");
+    else if (wins === losses )
+        console.log("You tied!");
+    else
+        console.log("You lost!");
+}
+
+function playRound(playerSelection, computerSelection) {
+    playerSelection = playerSelection.toLowerCase();
+    if (tieChecker(playerSelection, computerSelection) === true) {
+        console.log("Tie!");
+        ties += 1 
+        return "tie";
+    }
+
+    else if (winChecker(playerSelection, computerSelection) === true) {
+        console.log(`You Win! ${playerSelection} beats ${computerSelection}!`);
+        wins += 1
+        return "win";
+    }
+    else {
+        console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
+        losses += 1
+        return "lose";  
+    }
+}
+
+
+function winChecker(playerSelection, computerSelection) {
+    let winStatus = true
+    if (playerSelection === "rock") {
+        if (computerSelection === "paper") {
+            winStatus = false;
+        }
+        else {
+            winStatus = true;
+        }
+    }
+    else if (playerSelection === "paper") {
+        if (computerSelection === "scissors") {
+            winStatus = false;
+        }
+        else {
+            winStatus = true;
+        }
+    }
+    else {
+        if (computerSelection === "rock") {
+            winStatus = false;
+        }
+        else {
+            winStatus = true;
+        }
+    }
+    return winStatus;
+}
+
+function tieChecker(playerSelection, computerSelection) {
+    if (playerSelection === computerSelection) {
+        return true;
+    }
+    else {
+        return false;
+    }
+} 
+
+const playerSelection = "paper"
+const computerSelection = computerPlay()
+
+function computerPlay() {
+    let computerChoice = "rock";
+    let computerNumber = (Math.random());
+    if (computerNumber < .333) {
+        computerChoice = "rock"
+    }
+    else if (computerNumber <.666) {
+        computerChoice = "paper"
+    }
+    else {computerChoice = "scissors"}
+    return computerChoice;
+    
+}
+
+
+    </script>
+</body>
