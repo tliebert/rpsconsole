@@ -3,45 +3,44 @@
     <script>
 
 function game() {
-    wins = 0
-    losses = 0
-    ties = 0 
-    playRound(prompt("make a choice"), computerPlay())
-    playRound(prompt("make a choice"), computerPlay())
-    playRound(prompt("make a choice"), computerPlay())
-    playRound(prompt("make a choice"), computerPlay())
-    playRound(prompt("make a choice"), computerPlay())
+    let wins = 0;
+    let losses = 0;
+    let ties = 0;
+    for (let rounds = 0; rounds <5; rounds++) {
+        let result = playRound(prompt("choose rock, paper or scissors"), computerPlay())
+        if (result === "tie") {
+            ties++
+        }
+        else if (result === "win") {
+            wins++
+        }
+        else {
+            losses++
+        }
+    }
     console.log(`You won ${wins} times, lost ${losses} times, and tied ${ties} times`);
-    console.log(winDeterminer(wins, losses, ties));
 }
 
-function winDeterminer(wins, losses, ties) {
-    if (wins > losses)
-        console.log("You win!");
-    else if (wins === losses )
-        console.log("You tied!");
-    else
-        console.log("You lost!");
-}
 
 function playRound(playerSelection, computerSelection) {
+    tie = 0
+    loss = 0
+    win = 0
     playerSelection = playerSelection.toLowerCase();
     if (tieChecker(playerSelection, computerSelection) === true) {
-        console.log("Tie!");
-        ties += 1 
-        return "tie";
+        console.log(`Tie!`);
+        return "tie"
     }
 
     else if (winChecker(playerSelection, computerSelection) === true) {
         console.log(`You Win! ${playerSelection} beats ${computerSelection}!`);
-        wins += 1
-        return "win";
+        return "win"
     }
     else {
-        console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
-        losses += 1
-        return "lose";  
+        console.log(`You Lose! ${computerSelection} beats ${playerSelection}!`);
+        return "loss"
     }
+    
 }
 
 
