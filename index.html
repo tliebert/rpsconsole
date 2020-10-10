@@ -1,104 +1,20 @@
 <!DOCTYPE html>
+<html>
 <body>
-    <script>
-
-function game() {
-    let wins = 0;
-    let losses = 0;
-    let ties = 0;
-    for (let rounds = 0; rounds <5; rounds++) {
-        let result = playRound(prompt("choose rock, paper or scissors"), computerPlay())
-        if (result === "tie") {
-            ties++
-        }
-        else if (result === "win") {
-            wins++
-        }
-        else {
-            losses++
-        }
-    }
-    console.log(`You won ${wins} times, lost ${losses} times, and tied ${ties} times`);
-}
-
-
-function playRound(playerSelection, computerSelection) {
-    tie = 0
-    loss = 0
-    win = 0
-    playerSelection = playerSelection.toLowerCase();
-    if (tieChecker(playerSelection, computerSelection) === true) {
-        console.log(`Tie!`);
-        return "tie"
-    }
-
-    else if (winChecker(playerSelection, computerSelection) === true) {
-        console.log(`You Win! ${playerSelection} beats ${computerSelection}!`);
-        return "win"
-    }
-    else {
-        console.log(`You Lose! ${computerSelection} beats ${playerSelection}!`);
-        return "loss"
-    }
+    <div id="scoreboard">
+        <div id="wins">Wins:</div>
+        <div id="losses">Losses:</div>
+        <div id="ties">Ties:</div>
+        <div id="computerPick">Computer chose:</div>
+    </div>
+    <div id="playerChoices">
+        <button id="rock" class="rock choice" value="rock">Rock</button>
+        <button id="paper" class="paper choice" value="paper">Paper</button>
+        <button id="scissors" class="scissors choice" value="scissors">Scissors</button>
+        <button class="reset">Reset Game</button>
+    </div>
     
-}
-
-
-function winChecker(playerSelection, computerSelection) {
-    let winStatus = true
-    if (playerSelection === "rock") {
-        if (computerSelection === "paper") {
-            winStatus = false;
-        }
-        else {
-            winStatus = true;
-        }
-    }
-    else if (playerSelection === "paper") {
-        if (computerSelection === "scissors") {
-            winStatus = false;
-        }
-        else {
-            winStatus = true;
-        }
-    }
-    else {
-        if (computerSelection === "rock") {
-            winStatus = false;
-        }
-        else {
-            winStatus = true;
-        }
-    }
-    return winStatus;
-}
-
-function tieChecker(playerSelection, computerSelection) {
-    if (playerSelection === computerSelection) {
-        return true;
-    }
-    else {
-        return false;
-    }
-} 
-
-const playerSelection = "paper"
-const computerSelection = computerPlay()
-
-function computerPlay() {
-    let computerChoice = "rock";
-    let computerNumber = (Math.random());
-    if (computerNumber < .333) {
-        computerChoice = "rock"
-    }
-    else if (computerNumber <.666) {
-        computerChoice = "paper"
-    }
-    else {computerChoice = "scissors"}
-    return computerChoice;
-    
-}
-
-
-    </script>
 </body>
+<script src="scripts.js"></script>
+</html>
+
