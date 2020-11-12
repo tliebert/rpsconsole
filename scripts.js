@@ -16,6 +16,7 @@ lossCounter.textContent = "Losses: " + losses;
 // Appends the game status element to the DOM. Didn't add to HTML directly because wanted to practice DOM manipulation
 
 const gameStatus = document.createElement("div");
+gameStatus.classList.add("redtext")
 scoreBoard.appendChild(gameStatus);
 gameStatus.textContent = "Make your first pick";
 
