@@ -1,0 +1,7 @@
+.counter {
+    flex: 1 0 auto;
+}
+
+#scoreboard {
+    display: flex; 
+}
