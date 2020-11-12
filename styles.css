@@ -1,0 +1,12 @@
+.scoreElement {
+    flex: 1 0 auto;
+}
+
+.redtext {
+    color:red;
+}
+
+#scoreboard {
+    display: flex;
+    background-color: rgb(rgb(189, 118, 118), green, blue);
+}
